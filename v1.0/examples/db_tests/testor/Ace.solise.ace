@@ -1,0 +1,44 @@
+system
+
+	db_testor
+
+
+root
+
+	db_testor (ROOT_CLUSTER): "make"
+
+default
+
+	assertion (require);
+	precompiled ("$EIFFEL4/precomp/spec/solaris/base");
+	debug (no);
+	dead_code_removal (yes);
+	inlining (yes);
+	array_optimization (yes);
+	address_expression (yes);
+
+cluster
+
+	ROOT_CLUSTER: 	"$VERSANT_EIFFEL/examples/db_tests/testor";
+	shared:  	"$VERSANT_EIFFEL/examples/db_tests/shared";
+
+	versant_eiffel:	"$VERSANT_EIFFEL/lib";
+	ve_man (versant_eiffel): "$/man";
+	ve (versant_eiffel): "$/pubsubs";
+	ve_query_parsing (versant_eiffel): "$/query_parsing";
+	ve_struct (versant_eiffel): "$/structures";
+	ve_misc (versant_eiffel): "$/misc";
+	ve_query (versant_eiffel): "$/query";
+	ve_storage (versant_eiffel): "$/storage";
+	ve_user (versant_eiffel): "$/user";
+
+
+   
+external
+
+   object: 
+	   "${VERSANT_EIFFEL}/C/solise/${VERSANT_REL}/versant_bench.a",
+	   "-L/usr/local/versant/${VERSANT_REL}/solaris/lib",
+	   "-lpthread -loscfe -lm"
+
+end

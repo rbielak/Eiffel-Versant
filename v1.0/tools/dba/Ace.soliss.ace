@@ -1,0 +1,47 @@
+system
+
+	dba
+
+
+root
+
+	dba (ROOT_CLUSTER): "make"
+
+default
+
+	assertion (require);
+	precompiled ("/Soft/CALFP_Eiffel/week15.iss/precomp/base/base");
+	debug (no);
+	dead_code_removal (yes);
+	inlining (yes);
+	array_optimization (yes);
+	address_expression (yes);
+
+cluster
+
+   ROOT_CLUSTER: 	"$VERSANT_EIFFEL/tools/dba";
+   
+	abstract versant_eiffel: "$VERSANT_EIFFEL"
+		cluster
+			abstract lib
+				cluster
+					storage;
+					query;
+					query_parsing;
+					structures;
+					user;
+					man;
+					pubsubs;
+					misc;
+				end
+		end;
+
+   
+external
+
+   object: 
+	   "${VERSANT_EIFFEL}/C/soliss/${VERSANT_REL}/versant_bench.a",
+	   "-L/usr/local/versant/${VERSANT_REL}/sun4/lib",
+	   "-lposix4 -lpthread -loscfe -lm"
+
+end

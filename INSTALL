@@ -1,0 +1,28 @@
+INSTALLATION
+
+Ungzip and untar the archive into some directory.
+Assign an environment variable EIFFEL_VERSANT to
+be:
+
+VERSANT_EIFFEL to	{your-installation-dir}/versant/v1.0
+
+
+Then goto $VERSANT_EIFFEL/C/ and cd to the directory 
+that contains your OS/compiler specific Makefile.
+
+	soliss - Solaris, ISS 
+	solise - Solaris, ISE
+	etc..
+
+then run make in that directory to compile the C libraries.
+
+
+Then you can compile the examples in $VERSANT_EIFFEL/examples.
+
+The Ace files assume that Versant has been installed in:
+
+	 /usr/local/versant/${VERSANT_REL}
+
+where ${VERSANT_REL} is the Versant release number (like 5.0.8).
+
+

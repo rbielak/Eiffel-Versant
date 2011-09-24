@@ -1,0 +1,49 @@
+system
+	testp
+	-- Replace SYSTEM_NAME by the name of the executable file
+	-- to be generated for your system.
+
+root
+
+	testp (ROOT_CLUSTER): "make"
+	-- Replace ROOT_CLASS, ROOT_CLUSTER and creation_procedure
+	-- by the names of the root class, root class cluster and
+	-- root creation procedure for your system.
+	-- The `(ROOT_CLUSTER)' part may be omitted if there is
+	-- no other class of name ROOT_CLASS in the universe.
+
+default
+
+   precompiled ("/export/CALFP_Eiffel/week12.newiss/precomp/base/base");
+   assertion (all);
+   debug (no);
+   address_expression (yes);
+
+
+cluster
+
+   root_cluster: 	"$VERSANT_EIFFEL/examples/people";
+
+	abstract versant_eiffel: "$VERSANT_EIFFEL"
+		cluster
+			abstract lib
+				cluster
+					storage;
+					query;
+					query_parsing;
+					structures;
+					user;
+					man;
+					pubsubs;
+					misc;
+				end
+		end;
+
+   
+external
+   object: 
+	   "${VERSANT_EIFFEL}/C/liniss/${VERSANT_REL}/versant_bench.a",
+	   "-L/usr/local/versant/${VERSANT_REL}/linux/lib",
+	   "-lpthread -loscfe -lm"
+
+end

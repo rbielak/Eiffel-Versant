@@ -1,0 +1,48 @@
+system
+
+	db_testor
+
+
+root
+
+	db_testor (ROOT_CLUSTER): "make"
+
+default
+
+	assertion (require);
+	precompiled ("/export/CALFP_Eiffel/week12.newiss/precomp/base/base");
+	debug (no);
+	dead_code_removal (yes);
+	inlining (yes);
+	array_optimization (yes);
+	address_expression (yes);
+
+cluster
+
+	ROOT_CLUSTER: 	"$VERSANT_EIFFEL/examples/db_tests/testor";
+	shared: 	"$VERSANT_EIFFEL/examples/db_tests/shared";
+   
+	abstract versant_eiffel: "$VERSANT_EIFFEL"
+		cluster
+			abstract lib
+				cluster
+					storage;
+					query;
+					query_parsing;
+					structures;
+					user;
+					man;
+					pubsubs;
+					misc;
+				end
+		end;
+
+   
+external
+
+   object: 
+	   "${VERSANT_EIFFEL}/C/iss/versant_bench.a",
+	   "-L/usr/local/versant/${VERSANT_REL}/linux/lib",
+	   "-lpthread -loscfe -lm"
+
+end

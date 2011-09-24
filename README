@@ -1,0 +1,27 @@
+VERSANT/EIFFEL INTERFACE VERSION 1.0
+
+This package contains the interface library, tools and examples of
+Eiffel and Versant OODBMS interface.
+
+The Eiffel code works with ISE and Halstenbach compilers and has been
+tested with Versant 5.0.8 on Solaris, Windows NT and Linux.
+
+HISTORY
+
+This code has been developed at CAL FP Bank as part of the Rainbow
+project. The development of this interface started in early 1995. The
+main developers of the library include: Jean-Pierre Sarkis, Gurvan
+Lullien, Philippe Stephan and Richie Bielak. Many others also
+contributed code and ideas.
+
+
+LICENSE
+
+This library is released under the Eiffel Forum license.  See
+"forum.txt" file in this directory.
+
+
+
+richieb!@gmail.com
+
+October 4th, 1999

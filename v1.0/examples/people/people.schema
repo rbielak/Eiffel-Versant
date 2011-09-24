@@ -1,0 +1,184 @@
+CLASS pobject
+	ATTRIBUTE pobject_version integer
+	ATTRIBUTE pobject_root_id integer
+	ATTRIBUTE peif_id o_ptr
+END
+CLASS parray_boolean
+	INHERIT pobject
+	ATTRIBUTE lower integer
+	ATTRIBUTE upper integer
+	ATTRIBUTE db_area list (boolean)
+END
+CLASS managed
+	INHERIT pobject
+END
+CLASS named_manageable
+	INHERIT managed
+	ATTRIBUTE name string
+END
+CLASS plist[person]
+	INHERIT pobject
+	ATTRIBUTE area list(person)
+END	
+CLASS concurrent_plist[person]
+	INHERIT plist[person]
+END
+CLASS plist[pobject]
+	INHERIT pobject
+	ATTRIBUTE area list(pobject)
+END	
+CLASS concurrent_plist[pobject]
+	INHERIT plist[pobject]
+END	
+CLASS  plist_double
+	INHERIT pobject
+	ATTRIBUTE area list (double)
+END
+CLASS parray_double
+	INHERIT pobject
+	ATTRIBUTE lower integer
+	ATTRIBUTE upper integer
+	ATTRIBUTE db_area list (double)
+END
+CLASS parray[pobject]
+	INHERIT pobject
+	ATTRIBUTE lower integer
+	ATTRIBUTE upper integer
+	ATTRIBUTE db_area list (pobject)
+END
+CLASS parray[person]
+	INHERIT pobject
+	ATTRIBUTE lower integer
+	ATTRIBUTE upper integer
+	ATTRIBUTE db_area list(person)
+END
+CLASS troop
+	INHERIT parray[person]
+	ATTRIBUTE leader person
+END
+CLASS root_info
+	INHERIT pobject
+	ATTRIBUTE root_name string
+	ATTRIBUTE root_man_generator string
+	ATTRIBUTE contents concurrent_plist[pobject]
+	ATTRIBUTE register_root boolean
+	ATTRIBUTE root_contents_type string
+	ATTRIBUTE root_restricted_classes string
+	ATTRIBUTE root_ui_type string
+	ATTRIBUTE root_index integer
+END
+CLASS pstring_object
+	INHERIT pobject
+	ATTRIBUTE value string
+END
+CLASS plist[pstring_object]
+	INHERIT pobject
+	ATTRIBUTE area list(pstring_object)
+END
+CLASS plist_string 
+	INHERIT pobject
+	ATTRIBUTE area plist[pstring_object]
+END
+CLASS plist_obj[pobject]
+	INHERIT pobject
+	ATTRIBUTE db_area list(pobject)
+END
+CLASS person
+	INHERIT named_manageable
+	ATTRIBUTE  age integer
+	ATTRIBUTE  children concurrent_plist[person]
+	ATTRIBUTE  spouse person 
+	ATTRIBUTE  numbers plist_double
+	ATTRIBUTE  names plist_string
+	ATTRIBUTE  relatives parray[person]	
+	ATTRIBUTE  married boolean
+--	ATTRIBUTE  friends plist_obj[pobject]
+	ATTRIBUTE  friends segmented_plist[person]
+	ATTRIBUTE  password string
+	ATTRIBUTE  flags parray_boolean
+	ATTRIBUTE  best_friend person 
+END
+CLASS root_id_entry
+	INHERIT named_manageable
+	ATTRIBUTE root_id integer
+END
+CLASS plist[root_id_entry]
+	INHERIT pobject
+	ATTRIBUTE area list (root_id_entry)
+END
+CLASS root_rights
+	INHERIT pobject
+	ATTRIBUTE read boolean
+	ATTRIBUTE write boolean
+	ATTRIBUTE add boolean
+	ATTRIBUTE delete boolean
+	ATTRIBUTE priority integer
+	ATTRIBUTE root_name string
+END
+CLASS plist[root_rights]
+	INHERIT pobject
+	ATTRIBUTE area list (root_rights)
+END
+CLASS root_rights_set
+	INHERIT pobject
+	ATTRIBUTE rights plist[root_rights]
+END
+CLASS database_rights
+	INHERIT pobject
+	ATTRIBUTE db_name_pattern string
+	ATTRIBUTE rights root_rights_set
+END
+CLASS database_rights_set 
+	INHERIT pobject
+	ATTRIBUTE db_rights plist[database_rights]	
+END
+CLASS plist[database_rights]
+	INHERIT pobject
+	ATTRIBUTE area list (database_rights)
+END
+CLASS database_root
+	INHERIT pobject
+	ATTRIBUTE name string
+	ATTRIBUTE closed boolean
+	ATTRIBUTE production boolean
+	ATTRIBUTE database_id integer
+	ATTRIBUTE roots plist[root_info]
+END
+CLASS plist[root_info]
+	INHERIT pobject
+	ATTRIBUTE area list (root_info)
+END
+CLASS psegment
+	INHERIT pobject
+	ATTRIBUTE area plist[pobject]
+END
+CLASS plist[psegment]
+	INHERIT pobject
+	ATTRIBUTE area list (psegment)
+END
+CLASS segmented_plist[pobject]
+	INHERIT pobject
+	ATTRIBUTE count integer
+	ATTRIBUTE max_segment_size integer
+--	ATTRIBUTE area plist[plist[pobject]]
+END
+CLASS segmented_plist[person]
+	INHERIT segmented_plist[pobject]
+END
+CLASS plist[plist[martian]]
+	INHERIT pobject
+	ATTRIBUTE area list (plist[martian])	
+END
+CLASS segmented_plist[martian]
+	INHERIT segmented_plist[pobject]
+	ATTRIBUTE area plist[plist[martian]]
+END
+CLASS plist[martian]
+	INHERIT pobject
+	ATTRIBUTE area list (martian)
+END
+CLASS martian
+	INHERIT person
+	ATTRIBUTE wives segmented_plist[martian]
+	ATTRIBUTE offsprings plist[martian]
+END

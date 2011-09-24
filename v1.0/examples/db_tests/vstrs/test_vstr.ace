@@ -1,0 +1,59 @@
+system
+	test_vstrs
+
+root
+
+	test_vstrs (ROOT_CLUSTER): "make"
+
+default
+
+   precompiled ("$EIFFEL3/precomp/spec/$PLATFORM/base");
+   assertion (require);
+	address_expression (yes);
+--   debug ("diff_scanner");
+--	debug ("transaction")
+
+cluster
+
+   ROOT_CLUSTER: 	"$RAINBOW_DEV/../db_tests/vstrs";
+	shared: "$RAINBOW_DEV/../db_tests/shared";
+	sarkis: "$RAINBOW_SARKIS";
+	gurvan: "$RAINBOW_GURVAN";
+   
+   richieb_flat: "$RAINBOW_DEV";
+ 
+   access:             "$EIFFEL3/library/base/structures/access";
+   cursors:            "$EIFFEL3/library/base/structures/cursors";
+   cursor_tree:        "$EIFFEL3/library/base/structures/cursor_tree";
+   dispenser:          "$EIFFEL3/library/base/structures/dispenser";
+   iteration:          "$EIFFEL3/library/base/structures/iteration";
+   kernel:             "$EIFFEL3/library/base/kernel";
+   list:               "$EIFFEL3/library/base/structures/list";
+   obsolete:           "$EIFFEL3/library/base/structures/obsolete";
+   set:                "$EIFFEL3/library/base/structures/set";
+   sort:               "$EIFFEL3/library/base/structures/sort";
+   storage:            "$EIFFEL3/library/base/structures/storage";
+   support:            "$EIFFEL3/library/base/support";
+   table:              "$EIFFEL3/library/base/structures/table";
+   traversing:         "$EIFFEL3/library/base/structures/traversing";
+   tree:               "$EIFFEL3/library/base/structures/tree";
+   
+-- booch
+ 
+   
+   
+external
+   object: 
+   "${RAINBOW_DEV}/../lib/${PLATFORM}/${VERSANT_REL}/versantISE_bench.a";
+	"${RAINBOW_DEV}/../lib/${PLATFORM}/_timer.o";
+   "${RAINBOW_SARKIS}/../lib/${PLATFORM}/libqueries_bench.a"; 
+    "${RAINBOW_GURVAN}/../lib/${PLATFORM}/regex/regex.o";  
+--	"${RAINBOW_CONZE}/../lib/ISE/c_eiffel_util_bench.a";
+   "-L/usr/local/versant/${VERSANT_REL}/sun4/lib";
+   "-loscfe";
+   "-lm";
+   "-lnsl";
+   "-lsocket"
+	
+
+end

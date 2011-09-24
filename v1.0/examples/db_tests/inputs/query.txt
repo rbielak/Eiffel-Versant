@@ -1,0 +1,10 @@
+query,Adults,married = False
+query,Adults,name like $1 and spouse /= $2 and spouse.name like $3,"Person1*",Void,"Person1*"
+query,Spice,spouse = $1,(Adults:Person107)
+query,Adults,age > $1,35
+query,Adults,name like $1,"*7*"
+query,Adults,(children /= $1) and ($2 in children),Void,(Children:Person114)
+query,Spice,age > 13 and age < +40
+query,Adults,children /= $1,Void
+query,Children,name like $1 and not age >$2,"*7*",35
+query,Adults,name = $1 or spouse /= $2,"Person127",Void

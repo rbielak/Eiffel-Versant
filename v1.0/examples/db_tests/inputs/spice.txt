@@ -1,0 +1,25 @@
+add,Adults,person1,20
+add,Adults,richie,40
+add,Adults,jack,33
+add,Adults,person2,44
+add,Adults,person,88
+add,Adults,retired,79
+add,Spouse,spouse1 , 21
+add,Spouse,jayne, 21
+add,Spouse,retired_spouse, 77
+add,Spouse,debbie, 33
+add,Adults,rose, 78
+add,Adults,hans, 91
+marry,Adults,rose,Adults,hans
+marry,Adults,jack,Spouse,debbie
+marry,Adults,richie,Spouse,jayne
+add,Adults,paul,19
+add,Adults,henry,53
+kid,Adults,henry,Adults,hans
+kid,Adults,paul,Adults,henry
+buddy,Adults,paul,Adults,richie
+buddy,Adults,paul,Adults,jack
+add,Adults,kitty,47
+kid,Adults,paul,Adults,kitty
+buddy,Adults,kitty,Adults,richie
+buddy,Adults,kitty,Adults,jack
